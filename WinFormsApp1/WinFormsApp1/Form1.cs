@@ -10,7 +10,7 @@ namespace WinFormsApp1
         VarZ(j+1)= variable ni Z
         EquVar{i + 1}_{j + 1} = Variables nung equation
         signValue(i+1) = value kung <= >= or = 
-        EquConstraint(i+1) = contraints ni equ
+        EquValue(i+1) = contraints ni equ
         */
 
         public Form1()
@@ -130,7 +130,7 @@ namespace WinFormsApp1
                 panel1.Controls.Add(comboBox);
 
                 TextBox txtBoxValue = new TextBox();
-                txtBoxValue.Name = $"EquConstraint{i + 1}";
+                txtBoxValue.Name = $"EquValue{i + 1}";
                 txtBoxValue.Location = new Point(comboBox.Location.X + comboBox.Width + 10, (i * verticalSpacing) + 30);
                 txtBoxValue.Width = 45;
                 panel1.Controls.Add(txtBoxValue);
@@ -153,5 +153,64 @@ namespace WinFormsApp1
             equPanel(totalVariable, totalConstraints);
             System.Diagnostics.Debug.WriteLine("Hello");
         }
-    }
+
+        private void FindButton_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(textBox1.Text, out int totalVariable) || totalVariable <= 0)
+            {
+                MessageBox.Show("Total Variables must be a number greater than 0.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(textBox2.Text, out int totalConstraints) || totalConstraints <= 0)
+            {
+                MessageBox.Show("Total Constraints must be a number greater than 0.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            for (int i = 0; i < totalVariable; i++)
+            {
+                string varName = $"VarZ{i + 1}";
+                var control = panel2.Controls.Find(varName, true).FirstOrDefault();
+                if (control is TextBox txtBox)
+                {
+                    if (!double.TryParse(txtBox.Text, out double value) || value <= 0)
+                    {
+                        MessageBox.Show($"Z Variable x{i + 1} must be a number greater than 0.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+            }
+
+            for (int i = 0; i < totalConstraints; i++)
+            {
+                for (int j = 0; j < totalVariable; j++)
+                {
+                    string varName = $"EquVar{i + 1}_{j + 1}";
+                    var control = panel1.Controls.Find(varName, true).FirstOrDefault();
+                    if (control is TextBox txtBox)
+                    {
+                        if (!double.TryParse(txtBox.Text, out double value) || value <= 0)
+                        {
+                            MessageBox.Show($"Coefficient for Constraint {i + 1}, Variable x{j + 1} must be a number greater than 0.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+                }
+
+                string constraintName = $"EquValue{i + 1}";
+                var constraintControl = panel1.Controls.Find(constraintName, true).FirstOrDefault();
+                if (constraintControl is TextBox constraintBox)
+                {
+                    if (!double.TryParse(constraintBox.Text, out double rhs) || rhs <= 0)
+                    {
+                        MessageBox.Show($"Constraint {i + 1} right-hand value must be a number greater than 0.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+            }
+            //palitan nung actual code for next page
+            MessageBox.Show("OksGus", "Next", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+}
 }

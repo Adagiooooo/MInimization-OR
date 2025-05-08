@@ -36,6 +36,7 @@
             panel1 = new Panel();
             panel2 = new Panel();
             label3 = new Label();
+            FindButton = new Button();
             SuspendLayout();
             // 
             // label1
@@ -111,11 +112,23 @@
             label3.TabIndex = 0;
             label3.Text = "Subject to Constraints:";
             // 
+            // FindButton
+            // 
+            FindButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            FindButton.Location = new Point(934, 454);
+            FindButton.Name = "FindButton";
+            FindButton.Size = new Size(96, 23);
+            FindButton.TabIndex = 7;
+            FindButton.Text = "Find";
+            FindButton.UseVisualStyleBackColor = true;
+            FindButton.Click += FindButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1382, 775);
+            Controls.Add(FindButton);
             Controls.Add(label3);
             Controls.Add(panel1);
             Controls.Add(panel2);
@@ -141,5 +154,6 @@
         private Panel panel1;
         private Panel panel2;
         private Label label3;
+        private Button FindButton;
     }
 }
