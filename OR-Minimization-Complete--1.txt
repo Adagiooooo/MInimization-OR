@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace Minimization_Console
 {
+    // Nakaglobal mga to sa buong code
     // Stores the simplex iterations
     public class SimplexTableau
     {
@@ -11,6 +12,7 @@ namespace Minimization_Console
         public int Rows { get; set; }
         public int Columns { get; set; }
 
+        // for testing nlng to para makita laman ng array if want itest using CLI
         public virtual void PrintTableau()
         {
             for (int i = 0; i < Rows; i++)
@@ -36,6 +38,7 @@ namespace Minimization_Console
         public double[] Cj { get; set; }
         public double[] Zj { get; set; }
 
+        // ito ung nagpprint ng mga array (1st tableu, 2nd ratios, 3rd cj & zj))
         public override void PrintTableau()
         {
             Console.WriteLine($"\n--- Iteration {IterationNumber} ---");
@@ -71,6 +74,7 @@ namespace Minimization_Console
         }
     }
 
+    // ito ung part ng program na nagaask ng input sa user at nagssolve ng simplex
     internal class Program
     {
         // Global list to store each iteration’s table
@@ -81,14 +85,14 @@ namespace Minimization_Console
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Simplex Method Minimization (up to 10x10)");
 
+            // ito ung textbox na nag aask ng input sa user (number of variables and constraints))
             Console.Write("Enter the number of variables (max 10): ");
             int numVars = int.Parse(Console.ReadLine());
             Console.Write("Enter the number of constraints (max 10): ");
             int numConstraints = int.Parse(Console.ReadLine());
 
-            // Get the objective function coefficients
+            // This is for the textbox where the user inputs the coefficients of the objective function
             Console.WriteLine("\nEnter coefficients of the objective function:");
             double[] objective = new double[numVars];
             objectiveFunctionCoefficients = new double[numVars]; // Store in the global variable
@@ -99,7 +103,8 @@ namespace Minimization_Console
                 objectiveFunctionCoefficients[i] = objective[i]; // Store
             }
 
-            // Get the constraints
+            // this is for the textbox where the user inputs the coefficients of the constraints and the RHS values
+            // mapapalitan na ito kasi may GUI na tayo to handle that. ung need nlng is ipalit ung GUI dito
             double[,] constraints = new double[numConstraints, numVars + 1];
             string[] constraintTypes = new string[numConstraints];
 
@@ -142,6 +147,7 @@ namespace Minimization_Console
                 }
             }
 
+            // need ishow sa program if optimal or not ung solution
             if (optimal)
             {
                 Console.WriteLine("Optimal solution found.");
@@ -161,6 +167,10 @@ namespace Minimization_Console
             int slackArtificialCount = 0;
 
             // Count how many extra columns we need (slack + artificial)
+            // ginagamit ito para maging same ung dami ng columns ng cj at zj sa tableau
+            // bali "0" lng nmn mga ian. not needed narin naman sa gui
+            // not needed nmn ito tlga sa calculator. kasi iba way q para isolve ung pivot column
+            // pero need ito para tama ung dami ng columns pag nagttest sa cli
             foreach (var type in constraintTypes)
             {
                 if (type == "<=")
@@ -177,6 +187,7 @@ namespace Minimization_Console
             List<int> artificialVarColumns = new List<int>(); // List to store artificial variable column indices
 
             // Fill constraint rows
+            // pambuild at panglaman ng values s tableau
             for (int i = 0; i < numConstraints; i++)
             {
                 for (int j = 0; j < numVars; j++)
@@ -283,7 +294,7 @@ namespace Minimization_Console
                         }
                         else
                         {
-                            ratios[i] = "-"; // Use "-" for invalid ratios
+                            ratios[i] = "-"; // Use "-" for invalid ratios (negative values)
                         }
                     }
                 }
@@ -371,6 +382,8 @@ namespace Minimization_Console
             }
         }
 
+        // This method handles the next/previous iteration menu (will use a previous and next button for handling this))
+        // may error handling ito since CLI lang ung ginamit pero sa GUI, previous and next buttons lng nmn un so no need na
         static void ShowNextPreviousMenu()
         {
             int currentIteration = 0;
@@ -389,6 +402,7 @@ namespace Minimization_Console
                         currentIteration++;
                         simplexIterations[currentIteration].PrintTableau();
                     }
+                    // dapat sa GUI wala na mangyayari at last iteration na un
                     else
                     {
                         Console.WriteLine("You are at the last iteration.");
@@ -401,6 +415,7 @@ namespace Minimization_Console
                         currentIteration--;
                         simplexIterations[currentIteration].PrintTableau();
                     }
+                    // dapat sa GUI wala na mangyayari at first iteration na un
                     else
                     {
                         Console.WriteLine("You are at the first iteration.");
