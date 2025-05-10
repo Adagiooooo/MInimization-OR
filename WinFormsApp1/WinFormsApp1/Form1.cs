@@ -4,6 +4,7 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
+        //tite
         /*
         textBox1= Total Variables
         textBox2 = Total Constraints
@@ -12,7 +13,6 @@ namespace WinFormsApp1
         signValue(i+1) = value kung <= >= or = 
         EquValue(i+1) = contraints ni equ
         */
-
         public Form1()
         {
             InitializeComponent();
