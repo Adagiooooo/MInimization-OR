@@ -1,0 +1,14 @@
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\bin\Debug\net8.0\Minimization_Console.exe
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\bin\Debug\net8.0\Minimization_Console.deps.json
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\bin\Debug\net8.0\Minimization_Console.runtimeconfig.json
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\bin\Debug\net8.0\Minimization_Console.dll
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\bin\Debug\net8.0\Minimization_Console.pdb
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\obj\Debug\net8.0\Minimization_Console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\obj\Debug\net8.0\Minimization_Console.AssemblyInfoInputs.cache
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\obj\Debug\net8.0\Minimization_Console.AssemblyInfo.cs
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\obj\Debug\net8.0\Minimization_Console.csproj.CoreCompileInputs.cache
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\obj\Debug\net8.0\Minimization_Console.dll
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\obj\Debug\net8.0\refint\Minimization_Console.dll
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\obj\Debug\net8.0\Minimization_Console.pdb
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\obj\Debug\net8.0\Minimization_Console.genruntimeconfig.cache
+C:\Users\Eli\source\repos\Minimization_Console\Minimization_Console\obj\Debug\net8.0\ref\Minimization_Console.dll
