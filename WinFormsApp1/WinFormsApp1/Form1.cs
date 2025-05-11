@@ -6,6 +6,9 @@ namespace WinFormsApp1
     {
         //hello world
         //dlsaldasldsalsdldla
+        //OK TEST
+        // TEST 2 
+        // asdsaddsadsaasd
         /*
         textBox1= Total Variables
         textBox2 = Total Constraints
