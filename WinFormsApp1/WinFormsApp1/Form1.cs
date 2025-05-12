@@ -53,23 +53,23 @@ namespace WinFormsApp1
 
         private void mainSolution(int totalVar)
         {
-            panel2.Controls.Clear();
+            flowZ.Controls.Clear();
             int horizontalSpacing = 80;
             int verticalSpacing = 40;
 
             Label z = new Label();
             z.Text = "Z =";
-            z.Location = new Point(10, 35);
             z.AutoSize = true;
-            panel2.Controls.Add(z);
+            z.Margin = new Padding(0, 7, 3, 0);
+            flowZ.Controls.Add(z);
 
             for (int j = 0; j < totalVar; j++)
             {
                 TextBox txtBox = new TextBox();
                 txtBox.Name = $"VarZ{j + 1}";
-                txtBox.Width = 45;
-                txtBox.Location = new Point(10 + (j * horizontalSpacing) + z.Width, 30);
-                panel2.Controls.Add(txtBox);
+                txtBox.Width = 50;
+                txtBox.Margin = new Padding(5);
+                flowZ.Controls.Add(txtBox);
                 Label varLabel = new Label();
                 if (j == totalVar - 1)
                 {
@@ -79,16 +79,17 @@ namespace WinFormsApp1
                 {
                     varLabel.Text = $"x{j + 1} + ";
                 }
-                varLabel.Location = new Point(txtBox.Location.X + txtBox.Width + 5, txtBox.Location.Y + 8);
+                //varLabel.Location = new Point(txtBox.Location.X + txtBox.Width + 5, txtBox.Location.Y + 8);
                 varLabel.AutoSize = true;
-                panel2.Controls.Add(varLabel);
+                varLabel.Margin = new Padding(0, 7, 3, 0);
+                flowZ.Controls.Add(varLabel);
             }
 
 
-            int totalWidth = (totalVar * horizontalSpacing) + 120 + z.Width;
-            int totalHeight = verticalSpacing + 60;
-            panel2.Size = new Size(totalWidth, totalHeight);
-            panel2.AutoScroll = true;
+            //int totalWidth = (totalVar * horizontalSpacing) + 120 + z.Width;
+            //int totalHeight = verticalSpacing + 60;
+            //flowZ.Size = new Size(totalWidth, totalHeight);
+            flowZ.AutoScroll = true;
         }
 
 
@@ -96,10 +97,11 @@ namespace WinFormsApp1
 
         private void equPanel(int totalVar, int totalConst)
         {
-            panel1.Controls.Clear();
+            flowConst.Controls.Clear();
             int maxWidth = 0;
             int horizontalSpacing = 80;
             int verticalSpacing = 40;
+            
 
             for (int i = 0; i < totalConst; i++)
             {
@@ -107,9 +109,10 @@ namespace WinFormsApp1
                 {
                     TextBox txtBox = new TextBox();
                     txtBox.Name = $"EquVar{i + 1}_{j + 1}";
-                    txtBox.Location = new Point(10 + (j * horizontalSpacing), (i * verticalSpacing) + 30);
+                    //txtBox.Location = new Point(10 + (j * horizontalSpacing), (i * verticalSpacing) + 30);
                     txtBox.Width = 45;
-                    panel1.Controls.Add(txtBox);
+                    txtBox.Margin = new Padding(2);
+                    flowConst.Controls.Add(txtBox);
                     Label varLabel = new Label();
                     if (j == totalVar - 1)
                     {
@@ -119,31 +122,36 @@ namespace WinFormsApp1
                     {
                         varLabel.Text = $"x{j + 1} + ";
                     }
-                    varLabel.Location = new Point(txtBox.Location.X + txtBox.Width + 5, txtBox.Location.Y + 8);
+                    //varLabel.Location = new Point(txtBox.Location.X + txtBox.Width + 5, txtBox.Location.Y + 8);
                     varLabel.AutoSize = true;
-                    panel1.Controls.Add(varLabel);
+                    varLabel.Margin = new Padding(0, 7, 3, 0);
+                    flowConst.Controls.Add(varLabel);
                 }
                 ComboBox comboBox = new ComboBox();
                 comboBox.Name = $"signValue{i + 1}";
-                comboBox.Location = new Point((totalVar * horizontalSpacing) + 10, (i * verticalSpacing) + 30);
+                comboBox.Margin = new Padding(2);
+                //comboBox.Location = new Point((totalVar * horizontalSpacing) + 10, (i * verticalSpacing) + 30);
                 comboBox.Width = 40;
                 comboBox.Items.Add("<=");
                 comboBox.Items.Add(">=");
                 comboBox.Items.Add("=");
                 comboBox.SelectedIndex = 0;
-                panel1.Controls.Add(comboBox);
+                flowConst.Controls.Add(comboBox);
 
                 TextBox txtBoxValue = new TextBox();
                 txtBoxValue.Name = $"EquValue{i + 1}";
-                txtBoxValue.Location = new Point(comboBox.Location.X + comboBox.Width + 10, (i * verticalSpacing) + 30);
+                //txtBoxValue.Location = new Point(comboBox.Location.X + comboBox.Width + 10, (i * verticalSpacing) + 30);
+                txtBoxValue.Margin = new Padding(2);
                 txtBoxValue.Width = 45;
-                panel1.Controls.Add(txtBoxValue);
+                flowConst.Controls.Add(txtBoxValue);
+
+                flowConst.SetFlowBreak(txtBoxValue, true);
             }
 
-            int totalHeight = (verticalSpacing * totalConst) + 30;
-            int totalWidth = maxWidth + (totalVar * horizontalSpacing) + 200;
-            panel1.Size = new Size(totalWidth, totalHeight);
-            panel1.AutoScroll = true;
+            //int totalHeight = (verticalSpacing * totalConst) + 30;
+            //int totalWidth = maxWidth + (totalVar * horizontalSpacing) + 200;
+            //panel1.Size = new Size(totalWidth, totalHeight);
+            flowConst.AutoScroll = true;
         }
 
 
@@ -175,7 +183,7 @@ namespace WinFormsApp1
             for (int i = 0; i < totalVariable; i++)
             {
                 string varName = $"VarZ{i + 1}";
-                var control = panel2.Controls.Find(varName, true).FirstOrDefault();
+                var control = flowZ.Controls.Find(varName, true).FirstOrDefault();
                 if (control is TextBox txtBox)
                 {
                     if (!double.TryParse(txtBox.Text, out double value) || value <= 0)
@@ -191,7 +199,7 @@ namespace WinFormsApp1
                 for (int j = 0; j < totalVariable; j++)
                 {
                     string varName = $"EquVar{i + 1}_{j + 1}";
-                    var control = panel1.Controls.Find(varName, true).FirstOrDefault();
+                    var control = flowConst.Controls.Find(varName, true).FirstOrDefault();
                     if (control is TextBox txtBox)
                     {
                         if (!double.TryParse(txtBox.Text, out double value) || value <= 0)
@@ -203,7 +211,7 @@ namespace WinFormsApp1
                 }
 
                 string constraintName = $"EquValue{i + 1}";
-                var constraintControl = panel1.Controls.Find(constraintName, true).FirstOrDefault();
+                var constraintControl = flowConst.Controls.Find(constraintName, true).FirstOrDefault();
                 if (constraintControl is TextBox constraintBox)
                 {
                     if (!double.TryParse(constraintBox.Text, out double rhs) || rhs <= 0)
