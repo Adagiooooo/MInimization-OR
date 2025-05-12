@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Minimization_Console
 {
@@ -14,7 +15,8 @@ namespace Minimization_Console
         {
             for (int i = 0; i < Rows; i++)
             {
-                for (int j = 0; j < Columns; j++)
+                Console.Write($"{Tableau[i, Columns - 1],8:F2} "); // RHS
+                for (int j = 0; j < Columns - 1; j++)
                 {
                     Console.Write($"{Tableau[i, j],8:F2} ");
                 }
@@ -23,22 +25,35 @@ namespace Minimization_Console
         }
     }
 
-    // Derived class for storing each iteration’s tableau
+    // Derived class for storing each iteration’s tableau and ratios
     public class SimplexTableauIteration : SimplexTableau
     {
         public int IterationNumber { get; set; }
+        public string[] Ratios { get; set; } // Store ratios as strings to handle "-"
 
         public override void PrintTableau()
         {
             Console.WriteLine($"\n--- Iteration {IterationNumber} ---");
-            base.PrintTableau();
+            for (int i = 0; i < Rows; i++)
+            {
+                Console.Write($"{Tableau[i, Columns - 1],8:F2} "); // RHS
+                for (int j = 0; j < Columns - 1; j++)
+                {
+                    Console.Write($"{Tableau[i, j],8:F2} ");
+                }
+                if (Ratios != null && i < Ratios.Length)
+                {
+                    Console.Write($"   {Ratios[i],8} "); // Print ratio alongside
+                }
+                Console.WriteLine();
+            }
         }
     }
-
     internal class Program
     {
         // Global list to store each iteration’s table
-        static List<SimplexTableau> simplexIterations = new List<SimplexTableau>();
+        static List<SimplexTableauIteration> simplexIterations = new List<SimplexTableauIteration>();
+        static int currentIteration = 0; // Keep track of the current iteration being viewed
 
         static void Main(string[] args)
         {
@@ -73,7 +88,6 @@ namespace Minimization_Console
 
                 Console.Write("Enter the type of constraint (<=, =, >=): ");
                 constraintTypes[i] = Console.ReadLine();
-
                 Console.Write("Enter the RHS value: ");
                 constraints[i, numVars] = double.Parse(Console.ReadLine());
             }
@@ -82,13 +96,18 @@ namespace Minimization_Console
             SimplexTableauIteration initialTableau = BuildInitialTableau(objective, constraints, constraintTypes, numVars, numConstraints);
             initialTableau.IterationNumber = 0;
             simplexIterations.Add(initialTableau);
-
+            currentIteration = 0; // Initialize current iteration
             initialTableau.PrintTableau();
 
-            // Start simplex iterations
-            RunSimplexAlgorithm(numVars, numConstraints);
+            // Start simplex iterations and display each one
+            RunSimplexAlgorithm(initialTableau.Tableau, numVars, numConstraints, constraintTypes);
 
-            Console.WriteLine("\nSimplex process completed. You can access stored iterations from the global list.");
+            Console.WriteLine("\n--- All Iterations ---");
+            foreach (var iterationTableau in simplexIterations)
+            {
+                iterationTableau.PrintTableau();
+            }
+            Console.WriteLine("\nSimplex process completed.");
             Console.ReadKey();
         }
 
@@ -107,7 +126,6 @@ namespace Minimization_Console
 
             int totalCols = numVars + slackArtificialCount + 1; // +1 for RHS
             int totalRows = numConstraints + 1; // constraints + objective
-
             double[,] tableau = new double[totalRows, totalCols];
             int slackArtificialIndex = numVars;
 
@@ -126,13 +144,12 @@ namespace Minimization_Console
                 else if (constraintTypes[i] == ">=")
                 {
                     tableau[i, slackArtificialIndex++] = -1; // Surplus variable
-                    tableau[i, slackArtificialIndex++] = 1;  // Artificial variable
+                    tableau[i, slackArtificialIndex++] = 1;     // Artificial variable
                 }
                 else if (constraintTypes[i] == "=")
                 {
-                    tableau[i, slackArtificialIndex++] = 1;  // Artificial variable
+                    tableau[i, slackArtificialIndex++] = 1;     // Artificial variable
                 }
-
                 tableau[i, totalCols - 1] = constraints[i, numVars]; // RHS
             }
 
@@ -142,32 +159,77 @@ namespace Minimization_Console
                 tableau[totalRows - 1, j] = -objective[j]; // Minimization: negate coefficients
             }
 
-            // Big M adjustment can be added here if needed...
-
             return new SimplexTableauIteration
             {
                 Tableau = tableau,
                 Rows = totalRows,
-                Columns = totalCols
+                Columns = totalCols,
+                Ratios = null // Initialize ratios to null
             };
         }
 
-        static void RunSimplexAlgorithm(int numVars, int numConstraints)
+        static void RunSimplexAlgorithm(double[,] initialTableau, int numVars, int numConstraints, string[] constraintTypes)
         {
             int iteration = 1;
             bool optimal = false;
+            int rows = numConstraints + 1;
+            int cols = initialTableau.GetLength(1);
+            double[,] tableau = (double[,])initialTableau.Clone(); // Start with a *copy* of the initial tableau
 
             while (!optimal)
             {
-                // Clone the last tableau
-                SimplexTableauIteration lastTableau = simplexIterations[simplexIterations.Count - 1] as SimplexTableauIteration;
-                double[,] tableau = lastTableau.Tableau;
-                int rows = lastTableau.Rows;
-                int cols = lastTableau.Columns;
+                // Store the current tableau
+                double[,] currentTableau = new double[rows, cols];
+                Array.Copy(tableau, currentTableau, tableau.Length);
 
-                // Check if optimal (no negative values in objective row)
+                // Calculate Ratios
+                string[] ratios = new string[rows - 1];
                 int pivotCol = -1;
                 double minVal = 0;
+
+                for (int j = 0; j < cols - 1; j++)
+                {
+                    if (tableau[rows - 1, j] < minVal)
+                    {
+                        minVal = tableau[rows - 1, j];
+                        pivotCol = j;
+                    }
+                }
+
+                if (pivotCol != -1)
+                {
+                    for (int i = 0; i < rows - 1; i++)
+                    {
+                        if (tableau[i, pivotCol] > 0)
+                        {
+                            ratios[i] = (tableau[i, cols - 1] / tableau[i, pivotCol]).ToString("F2");
+                        }
+                        else
+                        {
+                            ratios[i] = "-";
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < rows - 1; i++)
+                        ratios[i] = "-";
+                }
+
+                // Store the current tableau and ratios
+                SimplexTableauIteration tableauIteration = new SimplexTableauIteration
+                {
+                    IterationNumber = iteration,
+                    Tableau = currentTableau,
+                    Rows = rows,
+                    Columns = cols,
+                    Ratios = ratios
+                };
+                simplexIterations.Add(tableauIteration);
+
+                // Check if optimal (no negative values in objective row)
+                minVal = 0;
+                pivotCol = -1;
                 for (int j = 0; j < cols - 1; j++)
                 {
                     if (tableau[rows - 1, j] < minVal)
@@ -185,16 +247,16 @@ namespace Minimization_Console
                 }
 
                 // Find pivot row
-                double minRatio = double.MaxValue;
+                double minRatioVal = double.MaxValue;
                 int pivotRow = -1;
                 for (int i = 0; i < rows - 1; i++)
                 {
                     if (tableau[i, pivotCol] > 0)
                     {
                         double ratio = tableau[i, cols - 1] / tableau[i, pivotCol];
-                        if (ratio < minRatio)
+                        if (ratio < minRatioVal)
                         {
-                            minRatio = ratio;
+                            minRatioVal = ratio;
                             pivotRow = i;
                         }
                     }
@@ -223,18 +285,6 @@ namespace Minimization_Console
                         }
                     }
                 }
-
-                // Store the new tableau
-                double[,] newTable = (double[,])tableau.Clone();
-                simplexIterations.Add(new SimplexTableauIteration
-                {
-                    IterationNumber = iteration,
-                    Tableau = newTable,
-                    Rows = rows,
-                    Columns = cols
-                });
-
-                simplexIterations[iteration].PrintTableau();
                 iteration++;
             }
         }
