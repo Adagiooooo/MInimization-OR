@@ -1,0 +1,20 @@
+.vs/
+*.vsidx
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore build output directories
+/bin/
+/obj/
+
+# Ignore user-specific project settings
+*.csproj.user
+
+# Ignore other common files
+*.dll
+*.exe
+*.pdb
+*.cache
+*.json
