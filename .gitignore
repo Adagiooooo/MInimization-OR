@@ -8,6 +8,9 @@
 # Ignore build output directories
 /bin/
 /obj/
+obj/
+bin/
+
 
 # Ignore user-specific project settings
 *.csproj.user
