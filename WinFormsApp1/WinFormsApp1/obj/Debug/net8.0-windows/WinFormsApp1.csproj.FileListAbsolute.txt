@@ -47,3 +47,21 @@ C:\OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\refint\WinFormsApp1.dll
 C:\OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.pdb
 C:\OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.genruntimeconfig.cache
 C:\OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\ref\WinFormsApp1.dll
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.exe
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.deps.json
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.runtimeconfig.json
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.dll
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.pdb
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Form1.resources
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Form2.resources
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.csproj.GenerateResource.cache
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.AssemblyInfoInputs.cache
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.AssemblyInfo.cs
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.sourcelink.json
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.dll
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\refint\WinFormsApp1.dll
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.pdb
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.genruntimeconfig.cache
+C:\Users\Dafhtine\OneDrive - adamson.edu.ph\Documents\GitHub\MInimization-OR\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\ref\WinFormsApp1.dll

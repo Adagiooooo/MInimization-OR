@@ -210,8 +210,10 @@ namespace WinFormsApp1
                     }
                 }
             }
-            //palitan nung actual code for next page
-            MessageBox.Show("OksGus", "Next", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
+           
         }
 }
 }

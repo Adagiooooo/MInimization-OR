@@ -43,7 +43,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(317, 28);
+            label1.Location = new Point(44, 35);
             label1.Name = "label1";
             label1.Size = new Size(96, 17);
             label1.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(419, 23);
+            textBox1.Location = new Point(146, 30);
             textBox1.MaxLength = 1;
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(80, 23);
@@ -61,7 +61,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(659, 28);
+            label2.Location = new Point(386, 35);
             label2.Name = "label2";
             label2.Size = new Size(108, 17);
             label2.TabIndex = 2;
@@ -70,7 +70,7 @@
             // textBox2
             // 
             textBox2.ImeMode = ImeMode.NoControl;
-            textBox2.Location = new Point(773, 27);
+            textBox2.Location = new Point(500, 34);
             textBox2.MaxLength = 1;
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(80, 23);
@@ -80,7 +80,7 @@
             // button1
             // 
             button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(934, 28);
+            button1.Location = new Point(661, 35);
             button1.Name = "button1";
             button1.Size = new Size(96, 23);
             button1.TabIndex = 4;
@@ -90,14 +90,14 @@
             // 
             // panel1
             // 
-            panel1.Location = new Point(317, 193);
+            panel1.Location = new Point(44, 200);
             panel1.Name = "panel1";
             panel1.Size = new Size(315, 208);
             panel1.TabIndex = 5;
             // 
             // panel2
             // 
-            panel2.Location = new Point(317, 66);
+            panel2.Location = new Point(44, 73);
             panel2.Name = "panel2";
             panel2.Size = new Size(717, 49);
             panel2.TabIndex = 6;
@@ -106,7 +106,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(317, 146);
+            label3.Location = new Point(44, 153);
             label3.Name = "label3";
             label3.Size = new Size(213, 25);
             label3.TabIndex = 0;
@@ -115,7 +115,7 @@
             // FindButton
             // 
             FindButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            FindButton.Location = new Point(934, 454);
+            FindButton.Location = new Point(661, 461);
             FindButton.Name = "FindButton";
             FindButton.Size = new Size(96, 23);
             FindButton.TabIndex = 7;
@@ -127,7 +127,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1382, 775);
+            ClientSize = new Size(807, 528);
             Controls.Add(FindButton);
             Controls.Add(label3);
             Controls.Add(panel1);

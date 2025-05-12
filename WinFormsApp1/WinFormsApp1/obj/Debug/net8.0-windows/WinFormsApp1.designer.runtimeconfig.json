@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\James Ventura\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\James Ventura\\.nuget\\packages",
+      "C:\\Users\\Dafhtine\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Dafhtine\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
