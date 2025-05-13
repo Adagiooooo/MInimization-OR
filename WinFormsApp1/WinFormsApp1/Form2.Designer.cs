@@ -2,15 +2,9 @@
 {
     partial class Form2
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.TextBox textBox3;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,20 +14,35 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form2";
-        }
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
 
-        #endregion
+            // 
+            // textBox3
+            // 
+            this.textBox3.Multiline = true;
+            this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox3.Font = new System.Drawing.Font("Consolas", 10F);
+            this.textBox3.Location = new System.Drawing.Point(12, 12);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(760, 537);
+            this.textBox3.TabIndex = 0;
+            this.textBox3.WordWrap = false;
+
+            // 
+            // Form2
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.textBox3);
+            this.Name = "Form2";
+            this.Text = "Solution";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+        }
     }
 }
