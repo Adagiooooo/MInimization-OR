@@ -54,7 +54,7 @@ namespace WinFormsApp1
             }
 
             string result = RunSimplexWithBigM(objective, constraints, types, totalVariables, totalConstraints);
-            this.Controls.Find("textBox3", true)[0].Text = result; // Assuming textBox3 is the output box
+            this.Controls.Find("textBox3", true)[0].Text = result;
         }
 
         private string RunSimplexWithBigM(double[] obj, double[,] cons, string[] types, int vars, int consCount)
@@ -178,6 +178,11 @@ namespace WinFormsApp1
                 result.AppendLine();
             }
             return result.ToString();
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

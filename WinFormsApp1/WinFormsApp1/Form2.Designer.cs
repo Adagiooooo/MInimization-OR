@@ -16,33 +16,34 @@
 
         private void InitializeComponent()
         {
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.SuspendLayout();
-
+            textBox3 = new TextBox();
+            SuspendLayout();
             // 
             // textBox3
             // 
-            this.textBox3.Multiline = true;
-            this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox3.Font = new System.Drawing.Font("Consolas", 10F);
-            this.textBox3.Location = new System.Drawing.Point(12, 12);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(760, 537);
-            this.textBox3.TabIndex = 0;
-            this.textBox3.WordWrap = false;
-
+            textBox3.Font = new Font("Consolas", 10F);
+            textBox3.Location = new Point(10, 9);
+            textBox3.Margin = new Padding(3, 2, 3, 2);
+            textBox3.Multiline = true;
+            textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
+            textBox3.ScrollBars = ScrollBars.Both;
+            textBox3.Size = new Size(666, 404);
+            textBox3.TabIndex = 0;
+            textBox3.WordWrap = false;
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.textBox3);
-            this.Name = "Form2";
-            this.Text = "Solution";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(686, 421);
+            Controls.Add(textBox3);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "Form2";
+            Text = "Solution";
+            Load += Form2_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
     }
 }
