@@ -101,7 +101,7 @@ namespace WinFormsApp1
             int maxWidth = 0;
             int horizontalSpacing = 80;
             int verticalSpacing = 40;
-            
+
 
             for (int i = 0; i < totalConst; i++)
             {
@@ -186,9 +186,9 @@ namespace WinFormsApp1
                 var control = flowZ.Controls.Find(varName, true).FirstOrDefault();
                 if (control is TextBox txtBox)
                 {
-                    if (!double.TryParse(txtBox.Text, out double value) || value <= 0)
+                    if (!double.TryParse(txtBox.Text, out double value))
                     {
-                        MessageBox.Show($"Z Variable x{i + 1} must be a number greater than 0.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"Z Variable x{i + 1} is not a Number", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                 }
@@ -202,9 +202,9 @@ namespace WinFormsApp1
                     var control = flowConst.Controls.Find(varName, true).FirstOrDefault();
                     if (control is TextBox txtBox)
                     {
-                        if (!double.TryParse(txtBox.Text, out double value) || value <= 0)
+                        if (!double.TryParse(txtBox.Text, out double value))
                         {
-                            MessageBox.Show($"Coefficient for Constraint {i + 1}, Variable x{j + 1} must be a number greater than 0.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Coefficient for Constraint {i + 1}, Variable x{j + 1} is not a number.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
                     }
@@ -214,9 +214,9 @@ namespace WinFormsApp1
                 var constraintControl = flowConst.Controls.Find(constraintName, true).FirstOrDefault();
                 if (constraintControl is TextBox constraintBox)
                 {
-                    if (!double.TryParse(constraintBox.Text, out double rhs) || rhs <= 0)
+                    if (!double.TryParse(constraintBox.Text, out double rhs))
                     {
-                        MessageBox.Show($"Constraint {i + 1} right-hand value must be a number greater than 0.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"Constraint {i + 1} right-hand value must be a number", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                 }
@@ -224,5 +224,5 @@ namespace WinFormsApp1
             //palitan nung actual code for next page
             MessageBox.Show("OksGus", "Next", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-}
+    }
 }
